@@ -17,3 +17,5 @@ rustler = { git = "https://github.com/rusterlium/rustler.git", branch = "master"
 threshold_crypto = { git = "https://github.com/vihu/threshold_crypto", branch = "master" }
 rand = "0.7.3"
 zeroize = "1.1.0"
+bincode = "*"
+serde = { version = "*", features = ["derive"] }

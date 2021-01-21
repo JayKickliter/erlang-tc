@@ -145,6 +145,8 @@ rustler::init!(
         bivar_commitment::row_bivar_commitment,
         bivar_commitment::cmp_bivar_commitment,
         bivar_commitment::reveal_bivar_commitment,
+        poly::poly_serialize,
+        poly::poly_deserialize
     ],
     load = load
 );

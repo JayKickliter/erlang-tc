@@ -1,11 +1,13 @@
 use crate::commitment::{CommitmentArc, CommitmentRes};
 use crate::fr::{FrArc, FrRes};
 use rustler::{Env, ListIterator, ResourceArc};
+use serde::{Deserialize, Serialize};
 use threshold_crypto::poly::Poly;
 use threshold_crypto::{Fr, IntoFr};
 use zeroize::Zeroize;
 
 /// Struct to hold Polynomial
+#[derive(Deserialize, Serialize)]
 pub struct PolyRes(pub(crate) Poly);
 
 pub type PolyArc = ResourceArc<PolyRes>;
@@ -13,6 +15,18 @@ pub type PolyArc = ResourceArc<PolyRes>;
 pub fn load(env: Env) -> bool {
     rustler::resource!(PolyRes, env);
     true
+}
+
+#[rustler::nif(name = "poly_serialize")]
+pub fn poly_serialize(p: PolyArc) -> crate::bin::Bin {
+    let bytes = bincode::serialize(&*p).unwrap();
+    crate::bin::Bin(bytes)
+}
+
+#[rustler::nif(name = "poly_deserialize")]
+pub fn poly_deserialize(bin: rustler::Binary) -> PolyArc {
+    let poly_res = bincode::deserialize(&bin).unwrap();
+    PolyArc::new(poly_res)
 }
 
 #[rustler::nif(name = "poly_from_coeffs")]

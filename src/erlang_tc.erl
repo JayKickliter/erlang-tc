@@ -91,6 +91,8 @@
     sub_scalar_poly/2,
     reveal_poly/1,
     commitment_poly/1,
+    poly_serialize/1,
+    poly_deserialize/1,
 
     %% Commitment API
     degree_commitment/1,
@@ -423,6 +425,12 @@ commitment_poly(_P) ->
 
 -spec mul_scalar_poly(Scalar :: number(), P :: reference()) -> reference().
 mul_scalar_poly(_Scalar, _P) ->
+    not_loaded(?LINE).
+
+poly_serialize(_P) ->
+    not_loaded(?LINE).
+
+poly_deserialize(_P) ->
     not_loaded(?LINE).
 
 %% ==================================================================
