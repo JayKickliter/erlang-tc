@@ -88,6 +88,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "half"
+version = "1.7.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "62aca2aba2d62b4a7f5b33f3712cb1b0692779a56fb510499d5c0aa594daeaf3"
+
+[[package]]
 name = "heck"
 version = "0.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -131,6 +137,7 @@ dependencies = [
  "rand",
  "rustler",
  "serde",
+ "serde_cbor",
  "threshold_crypto",
  "zeroize",
 ]
@@ -287,6 +294,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9bdd36f49e35b61d49efd8aa7fc068fd295961fd2286d0b2ee9a4c7a14e99cc3"
 dependencies = [
  "serde_derive",
+]
+
+[[package]]
+name = "serde_cbor"
+version = "0.11.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1e18acfa2f90e8b735b2836ab8d538de304cbb6729a7360729ea5a895d15a622"
+dependencies = [
+ "half",
+ "serde",
 ]
 
 [[package]]

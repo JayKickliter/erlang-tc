@@ -18,4 +18,5 @@ threshold_crypto = { git = "https://github.com/vihu/threshold_crypto", branch = 
 rand = "0.7.3"
 zeroize = "1.1.0"
 bincode = "*"
+serde_cbor = "*"
 serde = { version = "*", features = ["derive"] }

@@ -19,13 +19,13 @@ pub fn load(env: Env) -> bool {
 
 #[rustler::nif(name = "poly_serialize")]
 pub fn poly_serialize(p: PolyArc) -> crate::bin::Bin {
-    let bytes = bincode::serialize(&*p).unwrap();
+    let bytes = serde_cbor::ser::to_vec_packed(&*p).unwrap();
     crate::bin::Bin(bytes)
 }
 
 #[rustler::nif(name = "poly_deserialize")]
 pub fn poly_deserialize(bin: rustler::Binary) -> PolyArc {
-    let poly_res = bincode::deserialize(&bin).unwrap();
+    let poly_res = serde_cbor::from_slice(&bin).unwrap();
     PolyArc::new(poly_res)
 }
 
